@@ -34,6 +34,7 @@ var colorList = new Color[]
 };
 
 var index = 3;
+var increase = true;
 
 while (!Console.KeyAvailable)
 {
@@ -47,12 +48,15 @@ while (!Console.KeyAvailable)
     image.SetPixel(index + 3, 0, Color.FromArgb(11, 26, 101));
     device.Update();
 
-    if (++index > 236)
+    index = increase ? ++index : --index;
+
+    if (index < 3 || index > 236)
     {
-        index = 4;
+        increase = !increase;
+        index = increase ? ++index : --index;
     }
 
-    await Task.Delay(25);
+    await Task.Delay(10);
 }
 
 image.Clear();
