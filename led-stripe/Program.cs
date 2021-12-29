@@ -38,15 +38,15 @@ var index = 4;
 while (!Console.KeyAvailable)
 {
     image.Clear();
-    image.SetPixel(index - 4, 0, Color.FromArgb(255 - 4 * 51, 162, 0, 255));
-    image.SetPixel(index - 3, 0, Color.FromArgb(255 - 3 * 51, 162, 0, 255));
-    image.SetPixel(index - 2, 0, Color.FromArgb(255 - 2 * 51, 162, 0, 255));
-    image.SetPixel(index - 1, 0, Color.FromArgb(255 - 51, 162, 0, 255));
+    image.SetPixel(index - 4, 0, Color.FromArgb(56, 24, 75));
+    image.SetPixel(index - 3, 0, Color.FromArgb(77, 20, 109));
+    image.SetPixel(index - 2, 0, Color.FromArgb(109, 12, 165));
+    image.SetPixel(index - 1, 0, Color.FromArgb(136, 6, 210));
     image.SetPixel(index, 0, Color.FromArgb(162, 0, 255));
-    image.SetPixel(index + 1, 0, Color.FromArgb(255 - 51, 162, 0, 255));
-    image.SetPixel(index + 2, 0, Color.FromArgb(255 - 2 * 51, 162, 0, 255));
-    image.SetPixel(index + 3, 0, Color.FromArgb(255 - 3 * 51, 162, 0, 255));
-    image.SetPixel(index + 4, 0, Color.FromArgb(255 - 4 * 51, 162, 0, 255));
+    image.SetPixel(index + 1, 0, Color.FromArgb(136, 6, 210));
+    image.SetPixel(index + 2, 0, Color.FromArgb(109, 12, 165));
+    image.SetPixel(index + 3, 0, Color.FromArgb(77, 20, 109));
+    image.SetPixel(index + 4, 0, Color.FromArgb(56, 24, 75));
     device.Update();
 
     if (++index > 235)
@@ -54,7 +54,7 @@ while (!Console.KeyAvailable)
         index = 4;
     }
 
-    await Task.Delay(200);
+    await Task.Delay(50);
 }
 
 image.Clear();
