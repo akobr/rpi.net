@@ -2,11 +2,9 @@
 using System.Drawing;
 using Iot.Device.Ws28xx;
 
-// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
-var count = 240;
-
+const int count = 240;
 var settings = new SpiConnectionSettings(0,0)
 {
     ClockFrequency = 2_400_000,
@@ -14,7 +12,7 @@ var settings = new SpiConnectionSettings(0,0)
     DataBitLength = 8,
 };
 
-var spi = SpiDevice.Create(settings);
+using var spi = SpiDevice.Create(settings);
 var device = new Ws2812b(spi, count);
 
 var image = device.Image;
@@ -26,3 +24,10 @@ for(var i = 0; i < count; i++)
 }
 
 device.Update();
+
+Thread.Sleep(10000);
+
+image.Clear();
+device.Update();;
+
+Console.WriteLine("LED strip out!");
