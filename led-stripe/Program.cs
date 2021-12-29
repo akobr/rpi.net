@@ -19,11 +19,30 @@ var image = device.Image;
 image.Clear();
 var rnd = new Random();
 
+var colorList = new Color[]
+{
+    Color.FromArgb(27, 161, 226),
+    Color.FromArgb(160, 80, 0),
+    Color.FromArgb(51, 153, 51),
+    Color.FromArgb(162, 193, 57),
+    Color.FromArgb(216, 0, 115),
+    Color.FromArgb(240, 150, 9),
+    Color.FromArgb(230, 113, 184),
+    Color.FromArgb(162, 0, 255),
+    Color.FromArgb(229, 20, 0),
+    Color.FromArgb(0, 171, 169),
+};
+
 while (!Console.KeyAvailable)
 {
+    image.Clear();
+
     for (var i = 0; i < count; i++)
     {
-        image.SetPixel(i, 0, Color.FromArgb(rnd.Next(20, 256), rnd.Next(20, 256), rnd.Next(20, 256)));
+        if (i % 4 == 0)
+        {
+            image.SetPixel(i, 0, colorList[rnd.Next(colorList.Length)]);
+        }
     }
 
     device.Update();
