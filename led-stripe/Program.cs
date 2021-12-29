@@ -33,20 +33,28 @@ var colorList = new Color[]
     Color.FromArgb(0, 171, 169),
 };
 
+var index = 4;
+
 while (!Console.KeyAvailable)
 {
     image.Clear();
+    image.SetPixel(index - 4, 0, Color.FromArgb(255 - 4 * 51, 162, 0, 255));
+    image.SetPixel(index - 3, 0, Color.FromArgb(255 - 3 * 51, 162, 0, 255));
+    image.SetPixel(index - 2, 0, Color.FromArgb(255 - 2 * 51, 162, 0, 255));
+    image.SetPixel(index - 1, 0, Color.FromArgb(255 - 51, 162, 0, 255));
+    image.SetPixel(index, 0, Color.FromArgb(162, 0, 255));
+    image.SetPixel(index + 1, 0, Color.FromArgb(255 - 51, 162, 0, 255));
+    image.SetPixel(index + 2, 0, Color.FromArgb(255 - 2 * 51, 162, 0, 255));
+    image.SetPixel(index + 3, 0, Color.FromArgb(255 - 3 * 51, 162, 0, 255));
+    image.SetPixel(index + 4, 0, Color.FromArgb(255 - 4 * 51, 162, 0, 255));
+    device.Update();
 
-    for (var i = 0; i < count; i++)
+    if (++index > 235)
     {
-        if (i % 4 == 0)
-        {
-            image.SetPixel(i, 0, colorList[rnd.Next(colorList.Length)]);
-        }
+        index = 4;
     }
 
-    device.Update();
-    Thread.Sleep(5000);
+    await Task.Delay(200);
 }
 
 image.Clear();
