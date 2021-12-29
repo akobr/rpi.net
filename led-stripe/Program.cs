@@ -2,7 +2,7 @@
 using System.Drawing;
 using Iot.Device.Ws28xx;
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("Press any key to quit.");
 
 const int count = 240;
 var settings = new SpiConnectionSettings(0,0)
@@ -17,17 +17,20 @@ var device = new Ws2812b(spi, count);
 
 var image = device.Image;
 image.Clear();
+var rnd = new Random();
 
-for(var i = 0; i < count; i++)
+while (!Console.KeyAvailable)
 {
-    image.SetPixel(i, 0, Color.Green);
+    for (var i = 0; i < count; i++)
+    {
+        image.SetPixel(i, 0, Color.FromArgb(rnd.Next(20, 256), rnd.Next(20, 256), rnd.Next(20, 256)));
+    }
+
+    device.Update();
+    Thread.Sleep(5000);
 }
 
-device.Update();
-
-Thread.Sleep(10000);
-
 image.Clear();
-device.Update();;
+device.Update();
 
 Console.WriteLine("LED strip out!");
